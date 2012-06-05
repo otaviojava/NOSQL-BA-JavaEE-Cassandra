@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <ui:composition 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"    
+      xmlns:ui="http://java.sun.com/jsf/facelets"  
+        
+        >
+        <h:panelGrid columns="2">
+            <p:outputLabel for="nickname" value="Nick Name" />  
+            <p:inputText id="nickname"  value="#{engenheiroBean.engenheiro.nickName}" />   
+            <p:outputLabel for="nome" value="Nome" />  
+            <p:inputText id="nome"  value="#{engenheiroBean.engenheiro.nome}" />   
+            <p:outputLabel for="salario" value="Salário" />  
+            <p:inputText id="salario"  value="#{engenheiroBean.engenheiro.salario}" />   
+            <p:outputLabel for="especializacao" value="Especialização" />  
+            <p:inputText id="especializacao"  value="#{engenheiroBean.engenheiro.especializacao}" />   
+           </h:panelGrid>
+        <h1>Endereço</h1>
+        <h:panelGrid columns="2">
+         <p:outputLabel for="estado" value="Estado" />  
+         <p:inputText id="estado"  value="#{engenheiroBean.engenheiro.endereco.estado}" />   
+         <p:outputLabel for="cidade" value="Cidade" />  
+         <p:inputText id="cidade"  value="#{engenheiroBean.engenheiro.endereco.cidade}" />   
+         <p:outputLabel for="rua" value="Rua" />  
+         <p:inputText id="rua"  value="#{engenheiroBean.engenheiro.endereco.rua}" />   
+         </h:panelGrid>
+    </ui:composition>
+
+

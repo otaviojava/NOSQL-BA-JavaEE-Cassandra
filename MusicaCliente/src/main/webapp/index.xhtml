@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Musica Cliente</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+       Música Cliente
+        
+        <p:dataTable id="tabela" var="musica" value="#{musicaBean.musicas}">
+           
+         <p:column headerText="Nome Música" style="width:100px">  
+             <h:outputText value="#{musica.nomeMusica}" />  
+        </p:column>  
+         <p:column headerText="Album" style="width:100px">  
+             <h:outputText value="#{musica.album}" />  
+        </p:column>  
+            
+            <p:column headerText="Cantor" style="width:100px">  
+                <h:outputText value="#{musica.cantor}" />  
+               
+               
+        </p:column>  
+            
+         <p:column headerText="Lançamento" style="width:100px">  
+             <h:outputText value="#{musica.lancamento}" />  
+        </p:column>  
+            
+               <p:column style="width:40px">  
+             
+                   <p:commandButton id="selectButton" update=":form:panel" icon="ui-icon-search" title="View">  
+                       <f:setPropertyActionListener value="#{musica}" target="#{musicaBean.musica}" />   
+                 </p:commandButton>  
+             
+        </p:column>  
+            
+        </p:dataTable>
+        
+       <br/>
+       <br/>
+       <p:panel header="Música Atual" >
+        <p:outputPanel id="panel" >
+        <h:panelGrid columns="2">
+            <p:outputLabel for="nomeMusica"  value="Nome Música" />  
+            <p:inputText  id="nomeMusica" value="#{musicaBean.musica.nomeMusica}" />   
+            <p:outputLabel for="cantor" value="Cantor" />  
+            <p:inputText  id="cantor" value="#{musicaBean.musica.cantor}" />   
+            <p:outputLabel for="album" value="Album" />  
+            <p:inputText  id="album" value="#{musicaBean.musica.album}" />   
+            <p:outputLabel for="lancamento" value="Lançamento" />  
+            <p:inputText  id="lancamento" value="#{musicaBean.musica.lancamento}" />   
+            
+           </h:panelGrid>
+            <p:commandButton  value="Salvar" action="#{musicaBean.salvar()}"  update=":form:tabela"/>
+            <p:commandButton  value="Novo" action="#{musicaBean.novaMusica()}"  update=":form:tabela,:form:panel"/>
+       </p:outputPanel>
+      </p:panel>
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+        Hello from Facelets
+        
+        <p:dataTable id="tabela" var="engenheiro" value="#{engenheiroBean.engenheiros}">
+           
+         <p:column headerText="nickName" style="width:100px">  
+             <h:outputText value="#{engenheiro.nickName}" />  
+        </p:column>  
+         <p:column headerText="nome" style="width:100px">  
+                        <h:outputText value="#{engenheiro.nome}" />  
+        </p:column>  
+            
+            <p:column headerText="Salario" style="width:100px">  
+                <h:outputText value="#{engenheiro.salario}" >  
+                <f:convertNumber currencySymbol="R$" type="currency" />
+                </h:outputText>    
+        </p:column>  
+            
+         <p:column headerText="Especializacao" style="width:100px">  
+             <h:outputText value="#{engenheiro.especializacao}" />  
+        </p:column>  
+            
+               <p:column style="width:40px">  
+             
+                   <p:commandButton id="selectButton" action="#{engenheiroBean.editarEngenheiro()}" update=":form:panel" icon="ui-icon-search" title="View">  
+                     <f:setPropertyActionListener value="#{engenheiro}" target="#{engenheiroBean.engenheiro}" />   
+                 </p:commandButton>  
+             
+        </p:column>  
+            
+        </p:dataTable>
+        <br/>
+        <h1>Formulário</h1>
+        <p:outputPanel id="panel" >
+        <ui:include src="/WEB-INF/template/formulario.xhtml" />
+        </p:outputPanel>
+        <p:commandButton  value="Salvar" action="#{engenheiroBean.salvar()}"  update=":form:tabela"/>
+        <p:commandButton  value="Novo" action="#{engenheiroBean.novoEngenheiro()}"  update=":form:tabela,:form:panel"/>
+        </h:form>
+    </h:body>
+</html>
+
